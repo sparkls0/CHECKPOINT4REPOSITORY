@@ -1,0 +1,21 @@
+{% extends 'layout/base.html.twig' %}
+{% block body %}
+
+<div id="show-{{ showw.id }}"
+     class="card-show">
+    <h2> {{ showw.name }} </h2>
+    <div class="first-row-picture">
+        <img src="{{ showw.detail_picture1 }}" alt="imageCard" class="img-card-trips">
+        <img src="{{ showw.detail_picture2 }}" alt="imageCard" class="img-card-trips">
+    </div>
+    <div>
+        <img src="{{ showw.detail_picture3 }}" alt="imageCard" class="img-card-trips">
+        <img src="{{ showw.detail_picture4 }}" alt="imageCard" class="img-card-trips">
+    </div>
+
+    <div class="price-cart">
+        <h3>{{ showw.price }}</h3>
+        <i class="fas fa-shopping-cart cart-div"></i>
+    </div>
+
+{% endblock %}

@@ -33,6 +33,16 @@ class Artist
      */
     private $Showw;
 
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $Description;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $Picture;
+
     public function __construct()
     {
         $this->Showw = new ArrayCollection();
@@ -89,6 +99,30 @@ class Artist
         if ($this->Showw->contains($showw)) {
             $this->Showw->removeElement($showw);
         }
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->Description;
+    }
+
+    public function setDescription(string $Description): self
+    {
+        $this->Description = $Description;
+
+        return $this;
+    }
+
+    public function getPicture(): ?string
+    {
+        return $this->Picture;
+    }
+
+    public function setPicture(string $Picture): self
+    {
+        $this->Picture = $Picture;
 
         return $this;
     }
