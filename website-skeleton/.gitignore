@@ -7,7 +7,6 @@
 /var/
 /vendor/
 /.idea/
-/CHECKPOINT4.sql/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

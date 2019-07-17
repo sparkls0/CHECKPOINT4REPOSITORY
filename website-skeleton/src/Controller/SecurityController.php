@@ -8,6 +8,7 @@ use App\Form\RegistrationType;
 use Doctrine\Common\Persistence\ObjectManager;
 use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilder;
@@ -63,17 +64,23 @@ class SecurityController extends AbstractController
             ->add('email', EmailType::class,array(
                 'label'  => 'email',
                 'attr'   =>  array(
-                    'class'   => 'input-registration')))
+                    'placeholder' => 'Enter your mail adress here',
+                    'class'   => 'input-registration email')))
             ->add('password', PasswordType::class, array(
                 'label'  => 'email',
                 'attr'   =>  array(
-                    'class'   => 'input-registration')))
+                    'placeholder' => 'Enter your password',
+                    'class'   => 'input-registration password-check')))
             ->add('confirm_password', PasswordType::class, array(
                 'label'  => 'email',
                 'attr'   =>  array(
-                    'class'   => 'input-registration')))
+                    'placeholder' => 'Confirm your password',
+                    'class'   => 'input-registration password')))
+           // ->add('save',ButtonType::class, array(
+             //   'label' => 'button'))
             ->getForm();
 
+        $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $hash = $encoder->encodePassword($user, $user->getPassword());
@@ -105,11 +112,11 @@ class SecurityController extends AbstractController
                 'attr'   =>  array(
                     'class'   => 'input-registration')))
             ->add('password', PasswordType::class, array(
-                'label'  => 'email',
+                'label'  => 'password',
                 'attr'   =>  array(
                     'class'   => 'input-registration')))
             ->add('confirm_password', PasswordType::class, array(
-                'label'  => 'email',
+                'label'  => 'password_confirmation',
                 'attr'   =>  array(
                     'class'   => 'input-registration')))
             ->getForm();
