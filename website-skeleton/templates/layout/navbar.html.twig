@@ -16,9 +16,16 @@
     </div>
     <div class="btn-connexion">
         {% if app.user %}
-            <a style="text-decoration:none" href="{{ path('app_logout') }}">Déconnexion</a>
+            <a style="text-decoration:none" href="{{ path('app_logout') }}">Mon compte</a>
         {% else %}
             <a style="text-decoration:none" href="{{ path('app_login') }}">Connexion</a>
+        {% endif %}
+    </div>
+    <div class="btn-inscription">
+        {% if app.user %}
+            <a style="text-decoration:none" href="{{ path('app_logout') }}">Déconnexion</a>
+        {% else %}
+            <a style="text-decoration:none" href="{{ path('registration') }}">Inscription</a>
         {% endif %}
     </div>
 

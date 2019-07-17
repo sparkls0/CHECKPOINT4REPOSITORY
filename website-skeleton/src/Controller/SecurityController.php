@@ -2,9 +2,18 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\FormRegistrationType;
+use App\Form\RegistrationType;
+use Doctrine\Common\Persistence\ObjectManager;
+use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class SecurityController extends AbstractController
@@ -32,5 +41,81 @@ class SecurityController extends AbstractController
     public function logout()
     {
         throw new \Exception('This method can be blank - it will be intercepted by the logout key on your firewall');
+    }
+
+    /**
+     * @Route("/inscription", name="registration")
+     * @param \Symfony\Component\HttpFoundation\Request $request
+     * @param ObjectManager $manager
+     * @param UserPasswordEncoderInterface $encoder
+     * @return Response
+     */
+    public function registration(
+        \Symfony\Component\HttpFoundation\Request $request,
+        ObjectManager $manager,
+        UserPasswordEncoderInterface $encoder
+    ): Response
+    {
+
+        $user = new User();
+
+        $form = $this->createFormBuilder($user)
+            ->add('email', EmailType::class,array(
+                'label'  => 'email',
+                'attr'   =>  array(
+                    'class'   => 'input-registration')))
+            ->add('password', PasswordType::class, array(
+                'label'  => 'email',
+                'attr'   =>  array(
+                    'class'   => 'input-registration')))
+            ->add('confirm_password', PasswordType::class, array(
+                'label'  => 'email',
+                'attr'   =>  array(
+                    'class'   => 'input-registration')))
+            ->getForm();
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $hash = $encoder->encodePassword($user, $user->getPassword());
+
+            $user->setPassword($hash);
+
+            $manager->persist($user);
+            $manager->flush();
+
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('security/registration.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @return Response
+     */
+    public function navRegistration( FormBuilder $builder, array $options): Response
+    {
+
+        $user = new User();
+
+        $form = $this->createFormBuilder($user)
+            ->add('email', array(
+                'label'  => 'email',
+                'attr'   =>  array(
+                    'class'   => 'input-registration')))
+            ->add('password', PasswordType::class, array(
+                'label'  => 'email',
+                'attr'   =>  array(
+                    'class'   => 'input-registration')))
+            ->add('confirm_password', PasswordType::class, array(
+                'label'  => 'email',
+                'attr'   =>  array(
+                    'class'   => 'input-registration')))
+            ->getForm();
+
+
+
+        return $this->render('security/registration_form.html.twig', ['form' => $form->createView()]);
     }
 }

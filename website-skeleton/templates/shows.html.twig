@@ -7,14 +7,17 @@
                 <div id="show-{{ showw.id }}"
                      class="card-show">
                     <a style="text-decoration:none" href="{{ path('detail_show',{ 'id':showw.id}) }}">
-                    <h2> {{ showw.name }} </h2></a>
+                        <h2> {{ showw.name }} </h2></a>
                     <a style="text-decoration:none" href="{{ path('detail_show',{ 'id':showw.id}) }}">
-                    <img src="{{ showw.picture }}" alt="imageCard" class="img-card-shows"></a>
-    <div class="price-cart">
-        <h3>{{ showw.price }}</h3>
-        <i class="fas fa-shopping-cart cart-div"></i>
-        {% if app.user %}
-    </div>
+                        <img src="{{ showw.picture }}" alt="imageCard" class="img-card-shows"></a>
+                    <div class="price-cart">
+                        <h3>{{ showw.price }}</h3>
+                        {% if app.user %}
+                            <a href="/cart"><i class="fas fa-shopping-cart cart-div"></i></a>
+                        {% else %}
+                            <i class="fas fa-shopping-cart cart-div"></i>
+                        {% endif %}
+                    </div>
                 </div>
             {% endfor %}
         </div>
