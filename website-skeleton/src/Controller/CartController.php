@@ -20,8 +20,19 @@ class CartController extends AbstractController
     /**
      * @Route("/cart", name="cart_page")
      */
-    public function index(Request $request, ShowwRepository $repository): Response
+    public function show()
     {
-        return $this->render('cart.html.twig');
+
+        $favoris = $this->getUser()->getShoww();
+        $user = $this->getUser();
+
+
+        return $this->render(
+            'cart.html.twig',
+            [
+                'favoris' => $favoris,
+                'user' => $user,
+            ]
+        );
     }
 }

@@ -19,6 +19,16 @@ class ShowwRepository extends ServiceEntityRepository
         parent::__construct($registry, Showw::class);
     }
 
+    public function getShowwsWithArtists()
+    {
+        $qb = $this->createQueryBuilder('showw')
+            ->leftJoin('showw.artist', 'artist')
+            ->addSelect('artist')
+            ->where('artist.id = :id')
+            ->getQuery();
+
+        return $qb->execute();
+    }
     // /**
     //  * @return Showw[] Returns an array of Showw objects
     //  */

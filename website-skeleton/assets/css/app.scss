@@ -444,7 +444,30 @@ body {
   }
 }
 
+.alert{
+  background-color:$primary-color;
+  border: solid $primary-color 2px;
+  border-radius:2em;
+  width: 30%;
+  color:white;
+  font-family: $typography;
+  font-size: 2em;
+  text-align: center;
+  margin: 3% auto;
+}
 
 .homepage{
   background-image: url('../../public/build/homepageBackground.png');
+}
+
+.adress-maps{
+  display: flex;
+  justify-content: space-evenly;
+  width: 75%;
+  margin: 0 auto;
+  .map{
+    color: $primary-color;
+    font-size: 3em;
+    margin: 20% auto;
+  }
 }

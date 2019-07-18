@@ -1,5 +1,17 @@
 {% extends 'layout/base.html.twig' %}
-{% block body%}
+{% block body %}
+
+
+    {% for favori in favoris %}
+        <div id="show-{{ showw.id }}"
+             class="card-show">
+                <h2> {{ favoris.name }} </h2>
+                <img src="{{ favori.picture }}" alt="imageCard" class="img-card-shows"></a>
+            <div class="price-cart">
+                <h3>{{ showw.price }}</h3>
+            </div>
+        </div>
+    {% endfor %}
 
 
 

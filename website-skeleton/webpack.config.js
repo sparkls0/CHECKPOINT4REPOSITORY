@@ -3,6 +3,8 @@ var Encore = require('@symfony/webpack-encore');
 Encore
 // directory where compiled assets will be stored
     .setOutputPath('public/build/')
+    .autoProvidejQuery()
+
 
     .copyFiles({from: './yarn add sass-loader@^7.0.1 node-sass --dev',})
     .copyFiles({from: 'assets/img/',})
@@ -46,7 +48,8 @@ Encore
     .enableVersioning(Encore.isProduction())
 
     // enables @babel/preset-env polyfills
-    .configureBabel(() => {}, {
+    .configureBabel(() => {
+    }, {
         useBuiltIns: 'usage',
         corejs: 3
     })

@@ -93,9 +93,12 @@ class SecurityController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
+        $this->addFlash('success','Something is wrong, try again');
+
         return $this->render('security/registration.html.twig', [
             'form' => $form->createView(),
         ]);
+
     }
 
     /**

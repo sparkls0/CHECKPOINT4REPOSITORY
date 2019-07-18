@@ -9,11 +9,13 @@
                     <i class="fas fa-shopping-cart show-cart"></i>
                 </div>
                 <h2>{{ showw.date }}</h2>
-                <h4> {{ showw.adress }}</h4>
+                <div class="adress-maps">
+                    <h4> {{ showw.adress }}</h4>
+                    <a href="https://www.google.com/maps" target="_blank"><i class="fas fa-directions map"></i></a>
+                </div>
                 <div class="text-show">
                     <p>{{ showw.description }}</p>
                 </div>
-
             </div>
 
             <div id="show-{{ showw.id }}"

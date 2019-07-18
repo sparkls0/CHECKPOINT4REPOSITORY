@@ -29,7 +29,7 @@ class Artist
     private $Job;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Showw")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Showw", mappedBy="artist")
      */
     private $Showw;
 

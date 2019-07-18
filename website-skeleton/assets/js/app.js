@@ -16,3 +16,24 @@ require('@fortawesome/fontawesome-free/js/all.js');
 // const $ = require('jquery');
 
 console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
+
+
+const $ = require('jquery');
+
+
+$(document).ready(function () {
+
+    $('.cart-div').click(function (e) {
+
+        let id = parseInt(e.currentTarget.id);
+        let url = '/' + id + '/cart';
+        console.log(url);
+
+        fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                console.log(json);
+
+            });
+    });
+});

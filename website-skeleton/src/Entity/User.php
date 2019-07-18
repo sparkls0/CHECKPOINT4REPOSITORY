@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\Common\Collections\Collection;
@@ -39,6 +40,22 @@ class User implements UserInterface
      * @Assert\EqualTo(propertyPath="password", message="Merci de saisir deux mots de passe identiques")
      */
     private $confirm_password;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Showw", mappedBy="showw")
+     */
+    private $showws;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Favorite", inversedBy="User")
+     */
+    private $favorite;
+
+    public function __construct()
+    {
+        $this->showws = new ArrayCollection();
+        $this->favorite = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -132,5 +149,74 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection|Showw[]
+     */
+    public function getShoww(): Collection
+    {
+        return $this->showws;
+    }
+    /**
+     * @param Showw $showw
+     * @return User
+     */
+    public function addShoww(Showw $showw): self
+    {
+        if (!$this->showws->contains($showw)) {
+            $this->showws[] = $showw;
+            $showw->addShoww($this);
+        }
+
+        return $this;
+    }
+    /**
+     * @param Showw $showw
+     * @return User
+     */
+    public function removeShoww(Showw $showw): self
+    {
+        if ($this->showws->contains($showw)) {
+            $this->showws->removeElement($showw);
+            $showw->removeShoww($this);
+        }
+
+        return $this;
+    }
+
+    public function isFavoriteShow(Showw $showw)
+    {
+        $isFavoriteShow = false;
+        if ($this->showws->contains($showw)) {
+            $isFavoriteShow = true;
+        }
+        return $isFavoriteShow;
+    }
+
+    /**
+     * @return Collection|Favorite[]
+     */
+    public function getFavorite(): Collection
+    {
+        return $this->favorite;
+    }
+
+    public function addFavorite(Favorite $favorite): self
+    {
+        if (!$this->favorite->contains($favorite)) {
+            $this->favorite[] = $favorite;
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Favorite $favorite): self
+    {
+        if ($this->favorite->contains($favorite)) {
+            $this->favorite->removeElement($favorite);
+        }
+
+        return $this;
     }
 }

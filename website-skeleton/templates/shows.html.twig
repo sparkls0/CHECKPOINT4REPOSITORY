@@ -13,9 +13,10 @@
                     <div class="price-cart">
                         <h3>{{ showw.price }}</h3>
                         {% if app.user %}
-                            <a href="/cart"><i class="fas fa-shopping-cart cart-div"></i></a>
+                            <a class="nav-link" href="{{ path('cart_page', {'username': app.user.username}) }}">
+                                <i class="fas fa-shopping-cart cart-div"></i>
+                            </a>
                         {% else %}
-                            <i class="fas fa-shopping-cart cart-div"></i>
                         {% endif %}
                     </div>
                 </div>
