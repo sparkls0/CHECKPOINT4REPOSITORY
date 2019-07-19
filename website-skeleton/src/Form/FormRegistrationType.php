@@ -14,6 +14,7 @@ class FormRegistrationType extends AbstractType
     {
         $builder
             ->add('email')
+            ->add('name')
             ->add('password', PasswordType::class,[
                 'attr' => ['class' => 'input-registration']])
             ->add('confirm_password', PasswordType::class,[

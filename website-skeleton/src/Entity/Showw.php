@@ -5,7 +5,6 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ShowwRepository")
@@ -230,4 +229,8 @@ class Showw
         return $this;
     }
 
+    public function __toString()
+    {
+        return (string) $this->showw;
+    }
 }

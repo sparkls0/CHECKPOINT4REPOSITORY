@@ -26,7 +26,7 @@ $(document).ready(function () {
     $('.cart-div').click(function (e) {
 
         let id = parseInt(e.currentTarget.id);
-        let url = '/' + id + '/cart';
+        let url = '/shows/' + id + '/favorite';
         console.log(url);
 
         fetch(url)

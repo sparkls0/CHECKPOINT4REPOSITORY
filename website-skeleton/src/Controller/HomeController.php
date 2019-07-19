@@ -7,7 +7,7 @@ use App\Entity\Showw;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class HomeController extends AbstractController
 {
     /**
@@ -20,6 +20,7 @@ class HomeController extends AbstractController
 
     /**
      * @Route("shows/{id}/favorite",name="show_favorite")
+     * @ParamConverter("Showw", class="App\Entity\Showw", options={"id" = "showw_id"})
      */
     public function favorite(Showw $showw, EntityManagerInterface $entityManager)
     {

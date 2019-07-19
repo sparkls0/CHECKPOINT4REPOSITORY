@@ -379,10 +379,12 @@ body {
 .payments-column{
   display: flex;
   flex-direction: column;
+  width: 90%;
+  margin: 3% auto;
   .payments-row{
     margin-top: 3%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     div{
       width: 30%;
       margin: 0 auto;
@@ -469,5 +471,47 @@ body {
     color: $primary-color;
     font-size: 3em;
     margin: 20% auto;
+  }
+}
+
+.title-profile{
+  color: white;
+  font-family: $typography;
+  font-size: 1.5em;
+  text-align: center;
+  margin-top: 3%;
+
+}
+
+.title-shows-profile{
+  border: white solid 2px;
+  border-radius: 3em;
+  width: 25%;
+  margin: 3% auto;
+  h2{
+    color: white;
+    font-family: $typography;
+    font-size: 1.2em;
+    text-align: center;
+  }
+}
+
+.shows-profile{
+  border: white solid 3px;
+  width: 90%;
+  border-radius:1.2em;
+  margin: 0 auto;
+  p{
+    color: white;
+    font-family: $typography;
+    text-align: center;
+    font-size: 1.1em;
+    margin-bottom: 30%;
+  }
+  h1{
+    color: white;
+    font-family: $typography;
+    text-align: center;
+    font-size: 1.2em;
   }
 }

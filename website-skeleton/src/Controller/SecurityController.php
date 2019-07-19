@@ -6,11 +6,14 @@ use App\Entity\User;
 use App\Form\FormRegistrationType;
 use App\Form\RegistrationType;
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\DBAL\Types\StringType;
+use Doctrine\DBAL\Types\TextType;
 use http\Env\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilder;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -61,23 +64,28 @@ class SecurityController extends AbstractController
         $user = new User();
 
         $form = $this->createFormBuilder($user)
-            ->add('email', EmailType::class,array(
-                'label'  => 'email',
-                'attr'   =>  array(
+            ->add('name', TextareaType::class, array(
+                'label' => 'name',
+                'attr' => array(
+                    'placeholder' => 'Enter your username here',
+                    'class' => 'input-registration email')))
+            ->add('email', EmailType::class, array(
+                'label' => 'email',
+                'attr' => array(
                     'placeholder' => 'Enter your mail adress here',
-                    'class'   => 'input-registration email')))
+                    'class' => 'input-registration email')))
             ->add('password', PasswordType::class, array(
-                'label'  => 'email',
-                'attr'   =>  array(
+                'label' => 'email',
+                'attr' => array(
                     'placeholder' => 'Enter your password',
-                    'class'   => 'input-registration password-check')))
+                    'class' => 'input-registration password-check')))
             ->add('confirm_password', PasswordType::class, array(
-                'label'  => 'email',
-                'attr'   =>  array(
+                'label' => 'email',
+                'attr' => array(
                     'placeholder' => 'Confirm your password',
-                    'class'   => 'input-registration password')))
-           // ->add('save',ButtonType::class, array(
-             //   'label' => 'button'))
+                    'class' => 'input-registration password')))
+            // ->add('save',ButtonType::class, array(
+            //   'label' => 'button'))
             ->getForm();
 
         $form->handleRequest($request);
@@ -90,10 +98,12 @@ class SecurityController extends AbstractController
             $manager->persist($user);
             $manager->flush();
 
+
             return $this->redirectToRoute('app_login');
+
         }
 
-        $this->addFlash('success','Something is wrong, try again');
+        $this->addFlash('fail', 'Something is wrong, try again');
 
         return $this->render('security/registration.html.twig', [
             'form' => $form->createView(),
@@ -104,26 +114,25 @@ class SecurityController extends AbstractController
     /**
      * @return Response
      */
-    public function navRegistration( FormBuilder $builder, array $options): Response
+    public function navRegistration(FormBuilder $builder, array $options): Response
     {
 
         $user = new User();
 
         $form = $this->createFormBuilder($user)
             ->add('email', array(
-                'label'  => 'email',
-                'attr'   =>  array(
-                    'class'   => 'input-registration')))
+                'label' => 'email',
+                'attr' => array(
+                    'class' => 'input-registration')))
             ->add('password', PasswordType::class, array(
-                'label'  => 'password',
-                'attr'   =>  array(
-                    'class'   => 'input-registration')))
+                'label' => 'password',
+                'attr' => array(
+                    'class' => 'input-registration')))
             ->add('confirm_password', PasswordType::class, array(
-                'label'  => 'password_confirmation',
-                'attr'   =>  array(
-                    'class'   => 'input-registration')))
+                'label' => 'password_confirmation',
+                'attr' => array(
+                    'class' => 'input-registration')))
             ->getForm();
-
 
 
         return $this->render('security/registration_form.html.twig', ['form' => $form->createView()]);
