@@ -199,31 +199,6 @@ class User implements UserInterface
         return $isFavoriteShow;
     }
 
-    /**
-     * @return Collection|Favorite[]
-     */
-    public function getFavorite(): Collection
-    {
-        return $this->favorite;
-    }
-
-    public function addFavorite(Favorite $favorite): self
-    {
-        if (!$this->favorite->contains($favorite)) {
-            $this->favorite[] = $favorite;
-        }
-
-        return $this;
-    }
-
-    public function removeFavorite(Favorite $favorite): self
-    {
-        if ($this->favorite->contains($favorite)) {
-            $this->favorite->removeElement($favorite);
-        }
-
-        return $this;
-    }
 
     public function __toString()
     {

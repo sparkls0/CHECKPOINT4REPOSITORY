@@ -26,6 +26,7 @@ $(document).ready(function () {
     $('.cart-div').click(function (e) {
 
         let id = parseInt(e.currentTarget.id);
+        console.log(id);
         let url = '/shows/' + id + '/favorite';
         console.log(url);
 
@@ -36,4 +37,18 @@ $(document).ready(function () {
 
             });
     });
+});
+
+$(document).ready(function () {
+    $('.delete-show-div').click(function (e) {
+        let id = parseInt(e.currentTarget.id);
+        let url = '/shows/' + id + '/delete';
+
+        $.ajax({
+            type:"DELETE",
+            url: url,
+        })
+        location.reload()
+
+    })
 });

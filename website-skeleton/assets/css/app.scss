@@ -34,12 +34,13 @@ body {
   margin-top: 20%;
 }
 
-.cart-div{
+.cart-div {
   color: $primary-color;
   font-size: 2.2em;
   margin-top: 6%;
 }
-.show-cart{
+
+.show-cart {
   color: $primary-color;
   font-size: 3em;
 }
@@ -308,11 +309,12 @@ body {
 }
 
 
-.input-sign-up{
+.input-sign-up {
   display: flex;
   flex-direction: column;
   margin: 15% auto;
-  div{
+
+  div {
     margin: 0 auto;
     width: 60%;
   }
@@ -349,7 +351,8 @@ body {
     font-weight: bold;
     text-align: center;
   }
-  .password-check{
+
+  .password-check {
     background-color: white;
     border: $primary-color solid 1px;
     width: 100%;
@@ -376,48 +379,55 @@ body {
   }
 }
 
-.payments-column{
+.payments-column {
   display: flex;
   flex-direction: column;
   width: 90%;
   margin: 3% auto;
-  .payments-row{
+
+  .payments-row {
     margin-top: 3%;
     display: flex;
     justify-content: space-between;
-    div{
+
+    div {
       width: 30%;
       margin: 0 auto;
     }
-    img{
+
+    img {
       width: 50%;
       margin: 0 auto;
     }
   }
 }
 
-.full-page-detail{
+.full-page-detail {
   display: flex;
   flex-direction: row;
 }
-.show-detail{
+
+.show-detail {
   width: 50%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  h2{
+
+  h2 {
     color: $primary-color;
     font-size: 2.3em;
     font-family: $typography;
     text-align: center;
   }
-  h4{
+
+  h4 {
     color: $primary-color;
     font-size: 1.4em;
     font-family: $typography;
     text-align: center;
   }
-  p{
+
+  p {
     color: $primary-color;
     font-size: 1.2em;
     font-family: $typography;
@@ -426,55 +436,58 @@ body {
     margin: 0 auto;
   }
 }
-.card-detail-column{
+
+.card-detail-column {
   display: flex;
   border: solid $primary-color 2px;
-  border-radius:1em;
+  border-radius: 1em;
   flex-direction: column;
   width: 50%;
   margin: 3% auto;
   height: 100%;
-  .card-detail-row{
+
+  .card-detail-row {
     display: flex;
     width: 100%;
     flex-direction: row;
-    img
-    {
+
+    img {
       width: 100%;
-      border-radius:1em;
+      border-radius: 1em;
     }
   }
 }
 
-.alert{
-  background-color:$primary-color;
+.alert {
+  background-color: $primary-color;
   border: solid $primary-color 2px;
-  border-radius:2em;
+  border-radius: 2em;
   width: 30%;
-  color:white;
+  color: white;
   font-family: $typography;
   font-size: 2em;
   text-align: center;
   margin: 3% auto;
 }
 
-.homepage{
+.homepage {
   background-image: url('../../public/build/homepageBackground.png');
 }
 
-.adress-maps{
+.adress-maps {
   display: flex;
   justify-content: space-evenly;
   width: 75%;
   margin: 0 auto;
-  .map{
+
+  .map {
     color: $primary-color;
     font-size: 3em;
     margin: 20% auto;
   }
 }
 
-.title-profile{
+.title-profile {
   color: white;
   font-family: $typography;
   font-size: 1.5em;
@@ -483,12 +496,13 @@ body {
 
 }
 
-.title-shows-profile{
+.title-shows-profile {
   border: white solid 2px;
   border-radius: 3em;
   width: 25%;
   margin: 3% auto;
-  h2{
+
+  h2 {
     color: white;
     font-family: $typography;
     font-size: 1.2em;
@@ -496,22 +510,65 @@ body {
   }
 }
 
-.shows-profile{
+.shows-profile {
   border: white solid 3px;
   width: 90%;
-  border-radius:1.2em;
+  border-radius: 1.2em;
   margin: 0 auto;
-  p{
+
+  p {
     color: white;
     font-family: $typography;
     text-align: center;
     font-size: 1.1em;
     margin-bottom: 30%;
   }
-  h1{
+
+  h1 {
     color: white;
     font-family: $typography;
     text-align: center;
     font-size: 1.2em;
+  }
+}
+
+.cart-show {
+  width: 70%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  margin: 3% auto;
+  border: $primary-color solid 2px;
+  border-radius: 2em;
+
+  .cart-show-img {
+    width: 30%;
+
+    img {
+      width: 40%;
+      height: auto;
+      border-radius: 2em;
+      margin: 3%;
+    }
+  }
+  .cart-show-name,.cart-show-price,.delete-show-div{
+    margin-top: 4%;
+  }
+
+  h2 {
+    color: $primary-color;
+    font-family: $typography;
+    margin-top: 3%;
+  }
+
+  h3 {
+    color: $primary-color;
+    font-family: $typography;
+    margin-top: 3%;
+    font-size: 1.8em;
+  }
+  .delete-show{
+    font-size: 3em;
+    color: $primary-color;
   }
 }
