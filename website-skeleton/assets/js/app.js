@@ -36,7 +36,12 @@ $(document).ready(function () {
                 console.log(json);
 
             });
+        location.reload()
+
     });
+    setTimeout(function(){
+        $('.flash-notice').hide()
+    }, 3000)
 });
 
 $(document).ready(function () {
@@ -52,3 +57,6 @@ $(document).ready(function () {
 
     })
 });
+
+
+

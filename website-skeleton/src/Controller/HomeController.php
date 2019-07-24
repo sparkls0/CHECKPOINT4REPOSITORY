@@ -30,9 +30,10 @@ class HomeController extends AbstractController
             $this->getUser()->removeShoww($showw);
         } else {
             $this->getUser()->addShoww($showw);
-            $this->addFlash('Success', 'Bien ajouté au panier !');
         }
+
         $entityManager->flush();
+        $this->addFlash('notice', 'Bien ajouté au panier !');
 
 
         return $this->json(
@@ -46,7 +47,7 @@ class HomeController extends AbstractController
      * @Route("shows/{id}/delete", name="show_favorite_delete", requirements={"id":"\d+"}, methods={"DELETE"})
      */
 
-    public function deleteFavoriteShow(Showw $showw, EntityManagerInterface $entityManager):Response
+    public function deleteFavoriteShow(Showw $showw, EntityManagerInterface $entityManager): Response
     {
         if ($this->getUser()->getShoww()->contains($showw)) {
             $this->getUser()->removeShoww($showw);
